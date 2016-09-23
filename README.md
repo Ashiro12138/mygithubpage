@@ -1,1 +1,0 @@
-# [Ashiro's Website](http://ashiro.me)
