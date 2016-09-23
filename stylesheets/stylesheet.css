@@ -479,7 +479,7 @@ header h2 {
 
 .inner {
   position: relative;
-  width: 940px;
+  width: 1000px;
   margin: 0 auto;
 }
 
@@ -878,4 +878,3 @@ footer a:hover {
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) { }
-
