@@ -1,1 +1,1 @@
-# [Ashiro's Site](http://ashiro.me/ "title" target="_blank")
+# [Ashiro's Site](http://ashiro.me/)
