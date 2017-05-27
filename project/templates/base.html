@@ -1,27 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>{% block page_title %}Your Site{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  {% block css %}{% endblock %}
-
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
+	{% block head %}{% endblock %}
 </head>
-<body class="box">
+<body>
+<header>
+  <h1>Header</h1>
+</header>
 
-<nav class="nav-menu">
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="https://github.com/sloria/flask-ghpages-example">Source</a></li>
-    </ul>
+<nav>
+  <ul>
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('chat') }}">Chat</a></li>
+  </ul>
+
+  <!-- A Search form is another commmon non-linear way to navigate through a website. -->
+
+  <form>
+    <input type="search" name="q" placeholder="Search query">
+    <input type="submit" value="Go!">
+  </form>
+  {% if 'username' in session %}
+  	<h3>Welcome {{ session['username'] }}</h2><br>
+  	<p><a href="{{ url_for('logout') }}">Logout</a></p>
+  {% else %}
+  	<h3>Please log in</h3><br>
+  	<p><a href="{{ url_for('login') }}">Login</a></p>
+  {% endif %}
 </nav>
 
-<div class="{% block content_class %}container{% endblock content_class %}">
+<!-- Here is our page's main content -->
+<main>
+{% block article %}{% endblock %}
+  
 
-  <div class="content" role="main">
-    {% block content %}{% endblock %}
-  </div>
+  <!-- the aside content can also be nested within the main content -->
+  <aside>
+    <h2>Related</h2>
 
-</div><!-- end container -->
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <ul>
+      <li><a href="#">Oh I do like to be beside the seaside</a></li>
+      <li><a href="#">Oh I do like to be beside the sea</a></li>
+      <li><a href="#">Although in the North of England</a></li>
+      <li><a href="#">It never stops raining</a></li>
+      <li><a href="#">Oh well...</a></li>
+    </ul>
+  </aside>
+</main>
+
+<!-- And here is our main footer that is used across all the pages of our website -->
+
+	<footer>
+		{% block footer %}<p>©Copyright 2050 by nobody. All rights reversed.</p>{% endblock %}
+	</footer>
+
 </body>
 </html>
